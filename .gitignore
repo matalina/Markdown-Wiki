@@ -12,3 +12,7 @@ npm-debug.log
 yarn-error.log
 .env
 .phpunit.result.cache
+
+# Ignore all files in wiki folder except home.md
+/wiki/*
+!wiki/home.md
