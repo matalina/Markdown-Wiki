@@ -1,16 +1,14 @@
 <?php
+/* Main App landing page */
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+Route::get('/', 'AppController')
+    ->name('home');
 
-Route::get('/', function () {
-    return view('welcome');
-});
+/* Api get functions */
+
+Route::get('page/{path?}', 'PageController')
+    ->where('path', '(.*)')
+    ->name('page');
+
+Route::get('menu', 'MenuController')
+    ->name('menu');
