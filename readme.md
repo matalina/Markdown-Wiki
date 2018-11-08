@@ -2,6 +2,8 @@
 
 An SPA wiki with markdown formatting and yaml front matter meta data.
 
+After making any changes to the wiki folder `php artisan wiki:index` must be run.
+
 ## Convention over configuration for files 
 * All file and directory names should be lower case and only contain `a-z 0-9 - _`
 * All files should have  `.md` extension
@@ -18,6 +20,9 @@ tags:
     - tag 1
     - tag 2
 ```
+
+# To Do List
+- [ ] Create a git pull hook to run artisan indexing command
 
 # Notes
 
