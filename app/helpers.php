@@ -27,8 +27,8 @@ function wikiLinks($markdown)
     $indices = Index::with('page')->get();
 
     foreach($indices as $i) {
-        $url = str_replace('.md','',$i->page->location);
-        $page = "<router-link to='{$url}'>$1</router-link>";
+        $url = './#/page/'.str_replace('.md','',$i->page->location);
+        $page = "[$1]($url)";
         $markdown = preg_replace("/({$i->index})/i", $page, $markdown, 1);
     }
 

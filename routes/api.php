@@ -13,6 +13,12 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::get('page/{path?}', 'PageController')
+    ->where('path', '(.*)')
+    ->name('page');
+
+Route::get('menu', 'MenuController@index')
+    ->name('menu');
+
+Route::get('menu/{type}/{name}', 'MenuController@show')
+    ->name('menu.category');

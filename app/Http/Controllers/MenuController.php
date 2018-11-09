@@ -29,24 +29,34 @@ class MenuController extends Controller
     {
         switch($type) {
             case 'category':
+            case 'categories':
                 $pages = Page::whereHas('categories',function($query) use ($name){
                     $query->where('category','=',$name);
                 })->orderBy('title','asc')->get();
                 break;
             case 'tag':
+            case 'tags':
                 $pages = Page::whereHas('tags',function($query) use ($name){
                     $query->where('tag','=',$name);
                 })->orderBy('title','asc')->get();
                 break;
+            case 'pages':
             case 'page':
-                $pages = Page::where('title','like',$name.'%')->orderBy('title','asc')->get();
+                if($name == 'all') {
+                    $pages = Page::orderBy('title','asc')->get();
+                }
+                else {
+                    $pages = Page::where('title', 'like', $name . '%')->orderBy('title', 'asc')->get();
+                }
                 break;
             default:
                 return abort('404','This information does not exist.');
         }
         $menu = [];
         foreach($pages as $p) {
-            $menu[$p->location] = $p->title;
+            $path = str_replace('.md','',$p->location);
+            $path = str_replace('.md','',$p->location);
+            $menu[$path] = $p->title;
         }
 
         return response()->json($menu);
