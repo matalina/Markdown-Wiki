@@ -1,7 +1,8 @@
 import axios from 'axios';
+import options from './constants';
 
 axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-axios.defaults.baseURL = '/api/';
+axios.defaults.baseURL = options.BASE_URL;
 
 let token = document.head.querySelector('meta[name="csrf-token"]');
 

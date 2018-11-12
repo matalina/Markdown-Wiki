@@ -1,9 +1,11 @@
 <template>
     <div>
+        <hr/>
         <h1>
             Pages:
-            <small>{{ type }} - {{ name }}</small>
+            <small class="text-muted">{{ type }} - {{ name }}</small>
         </h1>
+        <hr/>
         <div class="row">
             <div class="col-lg-4 col-md-3"
                  v-for="(title, path) in pages"
