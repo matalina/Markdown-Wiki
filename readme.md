@@ -38,6 +38,7 @@ v1.0.0 - Initial release.
 * Automatic interlinking to first mention of an indexed page.
 
 # To Do List
+- [ ] Add search (on index & title)
 - [ ] Objects/Arrays as Meta data front matter yaml
 - [ ] Do not link to self
 - [ ] Different storage mechanisms to be used (Dropbox, Google Drive, Github)
