@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-axios.defaults.baseURL = 'http://192.168.200.181/mdwiki/api/';
+axios.defaults.baseURL = '/api/';
 
 let token = document.head.querySelector('meta[name="csrf-token"]');
 

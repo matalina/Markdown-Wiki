@@ -2294,7 +2294,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 __WEBPACK_IMPORTED_MODULE_0_axios___default.a.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-__WEBPACK_IMPORTED_MODULE_0_axios___default.a.defaults.baseURL = 'http://192.168.200.181/mdwiki/api/';
+__WEBPACK_IMPORTED_MODULE_0_axios___default.a.defaults.baseURL = '/api/';
 
 var token = document.head.querySelector('meta[name="csrf-token"]');
 
