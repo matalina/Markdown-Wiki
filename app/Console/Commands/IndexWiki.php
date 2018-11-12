@@ -46,26 +46,46 @@ class IndexWiki extends Command
         $storage = Storage::disk('wiki');
 
         foreach($storage->allFiles() as $path) {
-            $file = $storage->get($path);
+            if(preg_match('#^[a-z0-9\-_\/]+\.md$#',$path)) {
+                $file = $storage->get($path);
 
-            $data = parseFile($file);
+                $data = parseFile($file);
 
-            $checksum = md5($file);
+                $checksum = md5($file);
 
-            $page = $this->page($path, $checksum, $data);
+                $page = $this->page($path, $checksum, $data);
 
-            if(isset($data['meta']['category'])) {
-                $this->category($data, $page);
-            }
+                if (isset($data['meta']['category'])) {
+                    $this->category($data, $page);
+                }
 
-            if(isset($data['meta']['tags'])) {
-                $this->tag($data, $page);
-            }
+                if (isset($data['meta']['tags'])) {
+                    $this->tag($data, $page);
+                }
 
-            if(isset($data['meta']['index'])) {
-                $this->indices($data, $page);
+                if (isset($data['meta']['index'])) {
+                    $this->indices($data, $page);
+                }
             }
         }
+
+        $index = Index::with('page')->get();
+
+        foreach($index as $i) {
+            if(!Storage::disk('wiki')->exists($i->page->location)) {
+                $i->delete();
+            }
+        }
+
+        $pages = Page::with(['categories', 'tags'])->get();
+        foreach($pages as $p) {
+            if(!Storage::disk('wiki')->exists($p->location)) {
+                $p->categories()->detach();
+                $p->tags()->detach();
+                $p->delete();
+            }
+        }
+
     }
 
     protected function page($path, $checksum, $data)
