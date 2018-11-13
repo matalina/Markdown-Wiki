@@ -4,7 +4,9 @@ An SPA wiki with markdown formatting and yaml front matter meta data.
 
 After making any changes to the wiki folder `php artisan wiki:index` must be run.
 
-## Convention over configuration for files
+To use local images a symlink must be created from `wiki/images` to `public/images`.
+
+## Convention over configuration
  
 * Files are saved in the wiki directory of the project
 * All file and directory names should be lower case and only contain `a-z 0-9 - _`
