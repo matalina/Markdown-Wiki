@@ -31,6 +31,11 @@ other: single line data
 
 # Releases
 
+v1.0.1 - Bug fixes
+* Only indexes .md files that fall into conventions (ignores all other files)
+* Fixed indexing to add/remove pages as the wiki folder changes
+* Provided instructions and hook for local images
+
 v1.0.0 - Initial release.
  
 * Local Storage only
@@ -41,6 +46,7 @@ v1.0.0 - Initial release.
 
 # To Do List
 - [ ] Add search (on index & title)
+- [ ] Only display categories/tags that have pages attached to them
 - [ ] Objects/Arrays as Meta data front matter yaml
 - [ ] Do not link to self
 - [ ] Different storage mechanisms to be used (Dropbox, Google Drive, Github)
